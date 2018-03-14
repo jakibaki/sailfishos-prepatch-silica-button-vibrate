@@ -1,0 +1,26 @@
+--- a/usr/lib/qt5/qml/Sailfish/Silica/IconButton.qml	2017-10-28 18:02:28.925820424 +0200
++++ b/usr/lib/qt5/qml/Sailfish/Silica/IconButton.qml	2017-10-28 18:10:21.199240458 +0200
+@@ -35,6 +35,7 @@
+ import QtQuick 2.0
+ import Sailfish.Silica 1.0
+ import "private"
++import QtFeedback 5.0
+
+ MouseArea {
+     property alias icon: image
+@@ -47,6 +48,15 @@
+             pressTimer.start()
+         }
+     }
++
++    ThemeEffect {
++        id: buttonPressEffect
++        effect: ThemeEffect.PressWeak
++    }
++
++    onPressed: buttonPressEffect.play()
++    onClicked: buttonPressEffect.play()
++
+     onCanceled: pressTimer.stop()
+
+     width: Theme.itemSizeSmall; height: Theme.itemSizeSmall
